@@ -1,4 +1,6 @@
 use cli_commit_formatter::format_commit_body;
+use clipboard::ClipboardContext;
+use clipboard::ClipboardProvider;
 use std::env;
 use std::io::stdin;
 
@@ -13,6 +15,7 @@ fn main() {
     match stdin().read_line(&mut input) {
         Ok(_) => {
             let result = format_commit_body(&input, line_length);
+            copy_to_clipboard(result.clone());
             println!("{}", result)
         }
         Err(e) => println!("Something went wrong: {e}"),
@@ -28,4 +31,9 @@ fn parse_line_length_arg() -> usize {
         },
         None => DEFAULT_LINE_LENGTH,
     }
+}
+
+fn copy_to_clipboard(result: String) {
+    let mut ctx: ClipboardContext = ClipboardProvider::new().unwrap();
+    ctx.set_contents(result).unwrap();
 }
