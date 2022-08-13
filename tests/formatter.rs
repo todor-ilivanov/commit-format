@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use cli_commit_formatter::format_commit_body;
+    use commit_form::format_commit_body;
 
     #[test]
     fn test_formats_correctly() {

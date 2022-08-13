@@ -1,6 +1,6 @@
-use cli_commit_formatter::format_commit_body;
 use clipboard::ClipboardContext;
 use clipboard::ClipboardProvider;
+use commit_form::format_commit_body;
 use std::env;
 use std::io::stdin;
 
