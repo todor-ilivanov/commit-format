@@ -4,7 +4,7 @@ pub fn format_commit_body(input: &str, line_length: usize) -> String {
 
     for w in words {
         match result.last_mut() {
-            Some(last) if len_if_appended(&w, &last) < line_length => {
+            Some(last) if len_if_appended(&w, last) < line_length => {
                 let to_append = format!(" {}", w);
                 last.push_str(&to_append)
             }
